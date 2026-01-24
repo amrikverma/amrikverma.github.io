@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amrik Verma | UC Berkeley Portfolio</title>
+    
+    <!-- External Libraries (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfd;
+            scroll-behavior: smooth;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .berkeley-blue { color: #003262; }
+        .bg-berkeley-blue { background-color: #003262; }
+        .berkeley-gold { color: #FDB515; }
+        .bg-berkeley-gold { background-color: #FDB515; }
+        
+        /* Custom scrollbar for reader */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const PROJECTS = [
+            ,
+            {
+                id: '1',
+                title: 'Wheel Center',
+                category: 'Formula SAE',
+                shortDescription: 'Developing SLAM algorithms for small-scale robotic navigation in campus environments.',
+                longDescription: 'This project focused on the structural optimization and experimental validation of lightweight aluminum wheel centers for a Formula SAE race car, designed to interface with carbon fiber wheel shells while withstanding high dynamic loads during racing conditions. The primary design objective was aggressive mass reduction without compromising stiffness, fatigue life, or safety margins under combined loading scenarios. I developed a fully parametric wheel center model in SolidWorks, incorporating bolt patterns, bearing interfaces, and load transfer features optimized for CNC manufacturability. Load cases were derived from vehicle dynamics simulations and historical race data, including peak lateral cornering forces, longitudinal braking loads, and impact scenarios. These loads were applied in ANSYS using nonlinear contact definitions at bolt interfaces and bearing seats to accurately capture stress concentrations and load paths. Topology optimization was employed using 7075-T6 aluminum as the base material, with constraints on maximum displacement and minimum factor of safety. The optimization process removed non-load-bearing material while preserving stiffness in high-stress regions, resulting in a 59% reduction in mass compared to the initial design. Post-optimization FEA verified a minimum factor of safety of 1.3 under worst-case loading, with particular attention to fillets, spoke junctions, and bolt holes. To validate simulation results, I conducted strain gauge testing on the manufactured wheel centers under controlled loading conditions. Experimental strain data showed strong correlation with predicted stress distributions, confirming the accuracy of the FEA model. Modal vibration analysis was also performed to ensure that the wheel center’s natural frequencies were sufficiently separated from excitation frequencies encountered during racing, reducing the risk of resonance-induced fatigue failure. This project demonstrated the full design–analysis–manufacturing–validation pipeline for high-performance rotating components.',
+                imageUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800',
+                pdfUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+                tags: ['SOLIDWORKS', 'ANSYS', 'FEA', 'CNC Machining'],
+                date: 'Fall 2025'
+            },
+            {
+                id: '1',
+                title: 'Electric Guitar Bass Amplifier',
+                category: 'Class Project',
+                shortDescription: 'Developing SLAM algorithms for small-scale robotic navigation in campus environments.',
+                longDescription: 'This project focuses on implementing Simultaneous Localization and Mapping (SLAM) on a custom-built rover. We utilized ROS and Python to process LiDAR data and navigate Berkeley\'s hilly terrain efficiently. Conducted under the mentorship of the Robotics and Intelligent Machines lab.',
+                imageUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800',
+                pdfUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+                tags: ['LTspice', 'Op-Amp', 'Circuit Design'],
+                date: 'Fall 2025'
+            },
+            {
+                id: '2',
+                title: 'Differential Plates & Turnbuckle Design & Analysis',
+                category: 'Formula SAE',
+                shortDescription: 'A study on distributed systems performance across multi-cloud environments.',
+                longDescription: 'Collaborated with a team of students to build a high-throughput transaction system. My role involved optimizing the Kafka-based event bus and implementing robust Kubernetes orchestration patterns to handle 10k+ requests per second.',
+                imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+                pdfUrl: 'https://www.clickdimensions.com/links/TestPDFfile.pdf',
+                tags: ['SOLIDWORKS', 'Linear Static FEA', 'SLA 3D Printing'],
+                date: 'Fall 2025'
+            },
+            {
+                id: '2',
+                title: 'Tilted Quadcopter Design',
+                category: 'Research',
+                shortDescription: 'A study on distributed systems performance across multi-cloud environments.',
+                longDescription: 'Collaborated with a team of students to build a high-throughput transaction system. My role involved optimizing the Kafka-based event bus and implementing robust Kubernetes orchestration patterns to handle 10k+ requests per second.',
+                imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+                pdfUrl: 'https://www.clickdimensions.com/links/TestPDFfile.pdf',
+                tags: ['SOLIDWORKS', 'FEA', 'RL', 'Pytorch'],
+                date: 'Fall 2025'
+            },
+            {
+                id: '3',
+                title: 'Wind Turbine + Tower',
+                category: 'Class Project',
+                shortDescription: 'Leveraging Computer Vision to detect anomalies in early-stage medical imaging.',
+                longDescription: 'Using PyTorch and ResNet-50, we achieved a 94% accuracy rate in detecting specific retinal diseases from high-resolution scans. This research was conducted in collaboration with Berkeley AI Research (BAIR) and local clinical data providers.',
+                imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
+                pdfUrl: 'https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf',
+                tags: ['SOLIDWORKS', 'Linear Static FEA', 'SLA 3D Printing'],
+                date: 'Spring 2025'
+            }, 
+            {
+                id: '4',
+                title: 'MATLAB Bone Implant Analysis',
+                category: 'Class Project',
+                shortDescription: 'Leveraging Computer Vision to detect anomalies in early-stage medical imaging.',
+                longDescription: 'Using PyTorch and ResNet-50, we achieved a 94% accuracy rate in detecting specific retinal diseases from high-resolution scans. This research was conducted in collaboration with Berkeley AI Research (BAIR) and local clinical data providers.',
+                imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
+                pdfUrl: 'https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf',
+                tags: ['MATLAB', 'Statics', 'Healthcare'],
+                date: 'Spring 2025'
+            }, 
+            {
+                id: '6',
+                title: 'Interactive World Game',
+                category: 'Class Project',
+                shortDescription: 'Developing SLAM algorithms for small-scale robotic navigation in campus environments.',
+                longDescription: 'This project focuses on implementing Simultaneous Localization and Mapping (SLAM) on a custom-built rover. We utilized ROS and Python to process LiDAR data and navigate Berkeley\'s hilly terrain efficiently. Conducted under the mentorship of the Robotics and Intelligent Machines lab.',
+                imageUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800',
+                pdfUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+                tags: ['Java', 'DSA', 'LiDAR', 'Robotics'],
+                date: 'Spring 2025'
+            }
+        ];
+
+        const ProjectCard = ({ project, onClick }) => (
+            <div 
+                className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2 border border-slate-100 flex flex-col h-full"
+                onClick={() => onClick(project)}
+            >
+                <div className="aspect-[16/10] overflow-hidden relative">
+                    <img 
+                        src={project.imageUrl} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-[#003262]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span className="text-white text-xs font-black uppercase tracking-widest border-2 border-white px-6 py-2 rounded-full backdrop-blur-sm">
+                            View Project
+                        </span>
+                    </div>
+                </div>
+                <div className="p-8 flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-4">
+                        <span className="text-[9px] font-black uppercase tracking-widest text-blue-800 bg-blue-50 px-3 py-1 rounded-full">
+                            {project.category}
+                        </span>
+                        <span className="text-[9px] font-medium text-slate-400">{project.date}</span>
+                    </div>
+                    <h3 className="text-2xl font-serif font-bold text-slate-900 mb-3 group-hover:text-[#003262] transition-colors leading-tight">
+                        {project.title}
+                    </h3>
+                    <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
+                        {project.shortDescription}
+                    </p>
+                    <div className="mt-auto pt-6 flex flex-wrap gap-2">
+                        {project.tags.slice(0, 3).map(tag => (
+                            <span key={tag} className="text-[10px] text-slate-400 font-medium">#{tag}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        );
+
+        const ProjectModal = ({ project, onClose }) => {
+            if (!project) return null;
+            return (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-6 lg:p-12">
+                    <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-lg" onClick={onClose}></div>
+                    <div className="relative bg-white w-full h-full md:max-w-7xl rounded-none md:rounded-[48px] shadow-2xl flex flex-col md:flex-row overflow-hidden animate-fade-up">
+                        <div className="w-full md:w-96 lg:w-[480px] flex flex-col h-1/2 md:h-full border-b md:border-b-0 md:border-r border-slate-100 bg-white p-8 md:p-14 overflow-y-auto custom-scrollbar">
+                            <button onClick={onClose} className="mb-14 flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-[#003262] transition-all group">
+                                <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-[#003262] transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </div>
+                                Close
+                            </button>
+                            
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="h-px w-8 bg-berkeley-gold"></div>
+                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#003262]/60">{project.category}</span>
+                            </div>
+                            
+                            <h2 className="text-4xl font-serif font-bold text-slate-900 mb-10 leading-[1.1]">{project.title}</h2>
+                            
+                            <div className="space-y-10">
+                                <div className="space-y-4">
+                                    <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-900">Project Background</h4>
+                                    <p className="text-slate-600 leading-relaxed text-base font-light">{project.longDescription}</p>
+                                </div>
+                                
+                                <div className="space-y-4">
+                                    <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-900">Technical Toolkit</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.tags.map(tag => (
+                                            <span key={tag} className="px-4 py-2 bg-slate-50 border border-slate-100 text-slate-500 rounded-xl text-[10px] font-bold">{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="mt-auto pt-16">
+                                <a href="Projects/wheel_center.pdf" target="_blank" className="flex items-center justify-center w-full py-5 bg-[#003262] text-white rounded-2xl font-bold text-[11px] uppercase tracking-widest shadow-2xl shadow-blue-900/30 hover:bg-blue-900 hover:-translate-y-1 transition-all">
+                                    Download Full Documentation
+                                </a>
+                            </div>
+                        </div>
+                        <div className="flex-1 bg-slate-100 relative">
+                            <div className="absolute top-6 right-6 z-10 hidden lg:block">
+                                <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-widest text-slate-900 border border-slate-200">Interactive Preview</div>
+                            </div>
+                           <iframe src="Projects/wheel_center.pdf#toolbar=0&view=FitH" className="w-full h-full border-none" title="Wheel Center"/>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [selectedProject, setSelectedProject] = useState(null);
+
+            return (
+                <div className="min-h-screen">
+                    {/* Navigation */}
+                    <nav className="fixed top-0 w-full z-40 bg-white/70 backdrop-blur-2xl border-b border-slate-50">
+                        <div className="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
+                            <div className="flex items-center gap-5">
+                                <div className="w-12 h-12 rounded-2xl bg-[#003262] flex items-center justify-center text-white font-serif font-bold text-2xl shadow-xl shadow-blue-900/10">AV</div>
+                                <div>
+                                    <h1 className="font-serif font-bold text-xl text-[#003262] tracking-tight">Amrik Verma</h1>
+                                    <p className="text-[9px] font-black tracking-[0.4em] text-slate-400 uppercase">Berkeley Engineering</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-10">
+                                <a href="mailto:amrik_verma@berkeley.edu" className="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-[#003262] transition-colors">Contact</a>
+                                <div className="h-5 w-px bg-slate-100"></div>
+                                <p className="text-[10px] font-black italic text-[#003262]">Fiat Lux</p>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Hero Section */}
+                    <header className="pt-48 pb-32 px-8 bg-white overflow-hidden relative">
+                        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-24 relative z-10">
+                            <div className="flex-1 text-center lg:text-left animate-fade-up">
+                                <div className="flex items-center justify-center lg:justify-start gap-5 mb-12">
+                                    <div className="h-[2px] w-14 bg-berkeley-gold"></div>
+                                    <span className="text-[11px] font-black uppercase tracking-[0.5em] text-[#003262]/50">Portfolio Showcase</span>
+                                </div>
+                                <h1 className="text-7xl md:text-[140px] font-serif font-bold text-slate-900 leading-[0.9] mb-14">
+                                    I'm <span className="text-[#003262]">Amrik</span>.
+                                </h1>
+                                <p className="text-xl md:text-3xl text-slate-500 leading-relaxed font-light mb-16 max-w-xl mx-auto lg:mx-0">
+                                    Engineering student at UC Berkeley focused on the intersection of <span className="text-slate-900 font-medium">Mechanical Engineering</span>, <span className="text-slate-900 font-medium">Robotics</span>, and <span className="text-slate-900 font-medium">Automotive Engineering</span>.
+                                </p>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-10 pt-8 border-t border-slate-100">
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Department</span>
+                                        <span className="text-sm font-bold text-[#003262]">Mechanical Engineering</span>
+                                    </div>
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Role</span>
+                                        <span className="text-sm font-bold text-[#003262]">Undergraduate Student</span>
+                                    </div>
+                                    <div className="flex flex-col gap-1 hidden md:flex">
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Location</span>
+                                        <span className="text-sm font-bold text-[#003262]">Berkeley, CA</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex-1 w-full relative">
+                                <div className="grid grid-cols-2 gap-5 relative z-10">
+                                    <div className="space-y-5 pt-16">
+                                        <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700 hover:-translate-y-4">
+                                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Berkeley Student" />
+                                        </div>
+                                        <div className="aspect-square rounded-[40px] overflow-hidden shadow-xl border-8 border-white">
+                                            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Engineering" />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-5">
+                                        <div className="aspect-square rounded-[40px] overflow-hidden shadow-xl border-8 border-white">
+                                            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Sather Tower" />
+                                        </div>
+                                        <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700 hover:translate-y-4">
+                                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Robotics" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-[#003262]/10 to-[#FDB515]/10 rounded-full blur-[100px] -z-10"></div>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Projects Grid */}
+                    <main id="projects" className="py-40 bg-[#fcfcfd]">
+                        <div className="max-w-7xl mx-auto px-8">
+                            <div className="mb-28 flex flex-col md:flex-row md:items-end justify-between gap-12">
+                                <div className="max-w-2xl text-center md:text-left">
+                                    <h2 className="text-5xl md:text-6xl font-serif font-bold text-slate-900 mb-8 tracking-tight">Projects</h2>
+                                    <p className="text-slate-500 font-light text-xl leading-relaxed">A detailed archive of my engineering journey, documenting my key projects in engineering</p>
+                                </div>
+                                <div className="flex items-center gap-4 bg-white px-8 py-4 rounded-3xl border border-slate-100 shadow-sm">
+                                    <div className="w-3 h-3 rounded-full bg-berkeley-gold animate-pulse"></div>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#003262]">07 Active Files</span>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
+                                {PROJECTS.map((project) => (
+                                    <ProjectCard 
+                                        key={project.id} 
+                                        project={project} 
+                                        onClick={setSelectedProject} 
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </main>
+
+                    {/* Simple Footer */}
+                    <footer className="py-32 bg-white border-t border-slate-50">
+                        <div className="max-w-7xl mx-auto px-8 flex flex-col items-center gap-16">
+                            <div className="flex items-center gap-12">
+                                <a href="https://www.linkedin.com/in/amrik-verma/" className="text-slate-400 hover:text-[#003262] font-black text-[11px] uppercase tracking-[0.5em] transition-all hover:tracking-[0.7em]">LinkedIn</a>
+                                <a href="https://github.com/amrikverma" className="text-slate-400 hover:text-[#003262] font-black text-[11px] uppercase tracking-[0.5em] transition-all hover:tracking-[0.7em]">GitHub</a>
+                                <a href="Amrik_Verma_Resume.pdf" className="text-slate-400 hover:text-[#003262] font-black text-[11px] uppercase tracking-[0.5em] transition-all hover:tracking-[0.7em]">Resume</a>
+                            </div>
+                            <div className="h-px w-32 bg-slate-100"></div>
+                            <div className="flex flex-col items-center gap-4">
+                                <p className="text-[10px] font-black italic text-[#003262]/20 tracking-[0.8em] uppercase">Fiat Lux • Berkeley Engineering</p>
+                            </div>
+                        </div>
+                    </footer>
+
+                    <ProjectModal 
+                        project={selectedProject} 
+                        onClose={() => setSelectedProject(null)} 
+                    />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
