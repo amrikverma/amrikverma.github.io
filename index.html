@@ -62,8 +62,8 @@
                 id: '1',
                 title: 'Wheel Center',
                 category: 'Formula SAE',
-                shortDescription: 'Developing SLAM algorithms for small-scale robotic navigation in campus environments.',
-                longDescription: 'This project focused on the structural optimization and experimental validation of lightweight aluminum wheel centers for a Formula SAE race car, designed to interface with carbon fiber wheel shells while withstanding high dynamic loads during racing conditions. The primary design objective was aggressive mass reduction without compromising stiffness, fatigue life, or safety margins under combined loading scenarios. I developed a fully parametric wheel center model in SolidWorks, incorporating bolt patterns, bearing interfaces, and load transfer features optimized for CNC manufacturability. Load cases were derived from vehicle dynamics simulations and historical race data, including peak lateral cornering forces, longitudinal braking loads, and impact scenarios. These loads were applied in ANSYS using nonlinear contact definitions at bolt interfaces and bearing seats to accurately capture stress concentrations and load paths. Topology optimization was employed using 7075-T6 aluminum as the base material, with constraints on maximum displacement and minimum factor of safety. The optimization process removed non-load-bearing material while preserving stiffness in high-stress regions, resulting in a 59% reduction in mass compared to the initial design. Post-optimization FEA verified a minimum factor of safety of 1.3 under worst-case loading, with particular attention to fillets, spoke junctions, and bolt holes. To validate simulation results, I conducted strain gauge testing on the manufactured wheel centers under controlled loading conditions. Experimental strain data showed strong correlation with predicted stress distributions, confirming the accuracy of the FEA model. Modal vibration analysis was also performed to ensure that the wheel center’s natural frequencies were sufficiently separated from excitation frequencies encountered during racing, reducing the risk of resonance-induced fatigue failure. This project demonstrated the full design–analysis–manufacturing–validation pipeline for high-performance rotating components.',
+                shortDescription: 'Lightweight, FEA-optimized wheel center for Formula SAE drivetrain',
+                longDescription: 'Designed and optimized a lightweight, high-strength wheel center for a Formula SAE race car drivetrain. Led the full mechanical design process from load-case definition and free-body diagrams through CAD iteration and finite element analysis in ANSYS using topology optimization. Evaluated extreme braking, cornering, and aerodynamic downforce scenarios to model worst-case stresses and deflections. Iteratively refined spoke geometry, fillets, and material removal using FEA and topology-driven insights, reducing mass by ~59% while meeting strict performance constraints. Final design achieved a factor of safety of 1.3, sub-0.5 mm displacement, and a total mass of ~0.35 lb using CNC-machined 7075-T6 aluminum, balancing manufacturability, stiffness, and durability for competition use.',
                 imageUrl: 'Images/wheel_center_thumbnail.png',
                 pdfUrl: 'Projects/wheel_center.pdf',
                 tags: ['SOLIDWORKS', 'ANSYS', 'FEA', 'CNC Machining'],
@@ -73,8 +73,8 @@
                 id: '2',
                 title: 'Electric Guitar Bass Amplifier',
                 category: 'Class Project',
-                shortDescription: 'Developing SLAM algorithms for small-scale robotic navigation in campus environments.',
-                longDescription: 'This project focuses on implementing Simultaneous Localization and Mapping (SLAM) on a custom-built rover. We utilized ROS and Python to process LiDAR data and navigate Berkeley\'s hilly terrain efficiently. Conducted under the mentorship of the Robotics and Intelligent Machines lab.',
+                shortDescription: 'Analog guitar amplifier designed, simulated, and experimentally validated',
+                longDescription: 'Designed, analyzed, and built an analog electric guitar bass amplifier with a targeted passband of 300 Hz–15 kHz and a minimum voltage gain of 10. Derived the symbolic transfer function through hand calculations and selected component values to meet frequency and gain constraints. Simulated the circuit in LTSpice to validate time-domain and frequency-domain performance, achieving a peak gain of ~21 dB and accurate −3 dB cutoff frequencies. Implemented the design on a breadboard using an op-amp–based architecture and verified performance experimentally with an oscilloscope and Bode plots. Final hardware measurements closely matched analytical and simulated results, producing intentional signal distortion suitable for rock-style guitar tones.',
                 imageUrl: 'Images/electric_guitar_thumbnail.png',
                 pdfUrl: 'Projects/electric_guitar.pdf',
                 tags: ['LTspice', 'Op-Amp', 'Circuit Design'],
@@ -84,53 +84,53 @@
                 id: '3',
                 title: 'Differential Plates & Turnbuckle',
                 category: 'Formula SAE',
-                shortDescription: 'A study on distributed systems performance across multi-cloud environments.',
-                longDescription: 'Collaborated with a team of students to build a high-throughput transaction system. My role involved optimizing the Kafka-based event bus and implementing robust Kubernetes orchestration patterns to handle 10k+ requests per second.',
+                shortDescription: 'Adjustable FEA-validated differential mount for Formula SAE drivetrain',
+                longDescription: 'Designed a lightweight and adjustable differential mounting system for a Formula SAE powertrain, including CNC-machined aluminum mounting plates, steel chassis tabs, a turnbuckle chain-tensioning mechanism, and an integrated jacking bar. Performed FSAE rules analysis, drivetrain load calculations, and torque-induced force modeling to determine worst-case bearing and shock loads on the plates. Iteratively refined plate geometry using CAD and finite element analysis, reducing excess material while maintaining a minimum factor of safety of 1.5 under peak loads exceeding 35 kN. Selected a turnbuckle-based tensioning system for its simplicity, adjustability, and compact integration with the plates. Final design balanced manufacturability, serviceability, and structural robustness using 6061-T6 aluminum and AISI 4130 steel, validated through FEA and assembly-level integration. ',
                 imageUrl: 'Images/differential_thumbnail.png',
                 pdfUrl: 'Projects/diff_plates.pdf',
                 tags: ['SOLIDWORKS', 'Linear Static FEA', 'SLA 3D Printing'],
                 date: 'Fall 2025'
             },
+            // {
+            //     id: '4',
+            //     title: 'Tilted Quadcopter Design',
+            //     category: 'Research',
+            //     shortDescription: 'A study on distributed systems performance across multi-cloud environments.',
+            //     longDescription: 'Using PyTorch and ResNet-50, we achieved a 94% accuracy rate in detecting specific retinal diseases from high-resolution scans. This research was conducted in collaboration with Berkeley AI Research (BAIR) and local clinical data providers.',
+            //     imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+            //     pdfUrl: 'https://www.clickdimensions.com/links/TestPDFfile.pdf',
+            //     tags: ['SOLIDWORKS', 'FEA', 'RL', 'Pytorch'],
+            //     date: 'Fall 2025'
+            // },
             {
                 id: '4',
-                title: 'Tilted Quadcopter Design',
-                category: 'Research',
-                shortDescription: 'A study on distributed systems performance across multi-cloud environments.',
-                longDescription: 'Collaborated with a team of students to build a high-throughput transaction system. My role involved optimizing the Kafka-based event bus and implementing robust Kubernetes orchestration patterns to handle 10k+ requests per second.',
-                imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
-                pdfUrl: 'https://www.clickdimensions.com/links/TestPDFfile.pdf',
-                tags: ['SOLIDWORKS', 'FEA', 'RL', 'Pytorch'],
-                date: 'Fall 2025'
-            },
-            {
-                id: '5',
                 title: 'Wind Turbine + Tower',
                 category: 'Class Project',
-                shortDescription: 'Leveraging Computer Vision to detect anomalies in early-stage medical imaging.',
-                longDescription: 'Using PyTorch and ResNet-50, we achieved a 94% accuracy rate in detecting specific retinal diseases from high-resolution scans. This research was conducted in collaboration with Berkeley AI Research (BAIR) and local clinical data providers.',
+                shortDescription: 'Designed, simulated, and tested a small-scale wind turbine and tower',
+                longDescription: 'Designed, manufactured, and experimentally tested a small-scale horizontal-axis wind turbine, including a three-bladed rotor and a lightweight truss-structured tower. Designed blades using the SERI 805A airfoil with optimized angle of attack and twist to maximize lift at a 25 mph wind speed, informed by NREL data and aerodynamic theory. Modeled and simulated the tower in SolidWorks with finite element analysis to predict stiffness, stress distribution, and factor of safety under applied loads. Fabricated all components using FDM 3D printing and conducted controlled power and stiffness experiments. Achieved a peak electrical output of 2 W and measured a tower stiffness of 17.04 N/mm, closely matching simulated predictions. Evaluated efficiency relative to theoretical and Betz limits and analyzed discrepancies between simulation and experimental results to identify manufacturing and aerodynamic improvements. ',
                 imageUrl: 'Images/wind_turbine_thumbnail.png',
                 pdfUrl: 'Projects/wind_turbine.pdf',
                 tags: ['SOLIDWORKS', 'Linear Static FEA', 'SLA 3D Printing'],
                 date: 'Spring 2025'
             }, 
             {
-                id: '6',
+                id: '5',
                 title: 'MATLAB Bone Implant Analysis',
                 category: 'Class Project',
-                shortDescription: 'Leveraging Computer Vision to detect anomalies in early-stage medical imaging.',
-                longDescription: 'Using PyTorch and ResNet-50, we achieved a 94% accuracy rate in detecting specific retinal diseases from high-resolution scans. This research was conducted in collaboration with Berkeley AI Research (BAIR) and local clinical data providers.',
+                shortDescription: 'Computed implant-induced stress redistribution in bone using MATLAB',
+                longDescription: 'Developed a MATLAB-based computational framework to analyze stress redistribution in a femur cross-section due to the placement of an orthopedic implant. Processed grayscale bone density images to compute the homogeneous centroid, second moments of area, and asymmetric bending stresses under applied moments. Simulated multiple implant centroid positions and quantified their impact on peak stress magnitude and location relative to the no-implant baseline. Identified implant configurations that minimized stress concentration, achieving reductions to as low as ~80% of the baseline maximum stress. Visualized full-field stress contours and neutral axis shifts to evaluate mechanical load paths and structural response, demonstrating how implant positioning directly influences biomechanical performance. The framework provides insights for optimizing implant design and placement to enhance patient outcomes.',
                 imageUrl: 'Images/bone_implant_thumbnail.png',
                 pdfUrl: 'Projects/bone_implant.pdf',
                 tags: ['MATLAB', 'Statics', 'Healthcare'],
                 date: 'Spring 2025'
             }, 
             {
-                id: '7',
+                id: '6',
                 title: 'Interactive World Game',
                 category: 'Class Project',
-                shortDescription: 'A procedurally generated 2D game built in Java featuring deterministic world generation, tile-based rendering, real-time avatar movement, save/load support, fog-of-war visibility, and environmental hazards.',
+                shortDescription: 'Java world engine with procedural generation and interactive gameplay',
                 longDescription: 'A procedurally generated 2D world exploration game built entirely in Java, designed with deterministic generation, modular architecture, and real-time user interaction. The game generates a unique, reproducible world from a user-provided seed using randomized room placement and hallway connectivity algorithms. The system features a tile-based rendering engine, keyboard-driven avatar movement with collision handling, and a dynamic HUD that displays contextual tile information. Game state persistence is implemented through deterministic input replay, allowing exact reconstruction of saved worlds. Advanced gameplay features include a fog-of-war rendering system that limits visibility based on avatar proximity and environmental hazard tiles that trigger full world regeneration on contact. The project emphasizes clean object-oriented design, reusable abstractions, and algorithmic rigor, demonstrating strong proficiency in Java, data structures, and systems design.',
-                imageUrl: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800',
+                imageUrl: 'Images/world_game_thumbnail.png',
                 pdfUrl: 'Projects/world_game.pdf',
                 tags: ['Java', 'DSA', 'LiDAR', 'Robotics'],
                 date: 'Spring 2025'
@@ -272,7 +272,7 @@
                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-10 pt-8 border-t border-slate-100">
                                     <div className="flex flex-col gap-1">
                                         <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Department</span>
-                                        <span className="text-sm font-bold text-[#003262]">Mechanical Engineering</span>
+                                        <span className="text-sm font-bold text-[#003262]">Mechanical Engineering + EECS</span>
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Role</span>
@@ -304,7 +304,7 @@
                                 </div>
                                 <div className="flex items-center gap-4 bg-white px-8 py-4 rounded-3xl border border-slate-100 shadow-sm">
                                     <div className="w-3 h-3 rounded-full bg-berkeley-gold animate-pulse"></div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#003262]">07 Active Files</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#003262]">06 Active Files</span>
                                 </div>
                             </div>
 
